@@ -97,16 +97,22 @@
                         FontSize="35"
                         FontWeight="DemiBold"/>
                     <TextBlock 
-                        Text="content:"
+                        Text="  content:"
                         FontSize="35"
                         FontWeight="DemiBold"/>
                 </StackPanel>
-                
+
                 <TextBox 
+                    Height="auto"
+                    Width="auto"
+                    VerticalAlignment="Top"
                     FontSize="20" 
-                    TextWrapping="Wrap"
                     Text="{Binding Content}"
-                    VerticalScrollBarVisibility="Visible"/>
+                    Foreground="Gray"
+                    TextWrapping="Wrap"  
+                    AcceptsReturn="True" 
+                    VerticalScrollBarVisibility="Auto" 
+                    HorizontalScrollBarVisibility="Auto"/>
                 
             </StackPanel>
         </Grid>
