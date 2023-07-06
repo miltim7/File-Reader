@@ -5,33 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileReader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="470" Width="800">
 
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
         <StackPanel Grid.Column="0">
+            
             <ProgressBar 
                 Height="50" 
-                Margin="50"/>
-            
+                Margin="10 50 10 0"/>
+
             <Button 
                 Content="Cancel" 
                 HorizontalAlignment="Left"
-                Margin="50 0 0 0"
+                Margin="10 50 0 10"
                 Height="40"
                 Width="100"
                 FontSize="20"
-                Command="{Binding Analize}"/>
-            
-            <TextBlock Text="{Binding SymbolCount}"/>
-            <TextBlock Text="{Binding Words}"/>
-            <TextBlock Text="{Binding Sentences}"/>
-            
+                Command="{Binding Cancel}"/>
+
+            <TextBlock 
+                Text="{Binding SymbolCount}"
+                FontSize="20" 
+                Margin="20"/>
+            <TextBlock 
+                Text="{Binding Words}" 
+                FontSize="20" 
+                Margin="20"/>
+            <TextBlock 
+                Text="{Binding Sentences}"
+                FontSize="20"
+                Margin="20"/>
+
         </StackPanel>
 
         <StackPanel Grid.Column="1">
@@ -39,24 +49,28 @@
             <TextBlock 
                 Text="Files:"
                 FontSize="40"
-                Margin="10"/>
+                Margin="50 10 10 10"/>
 
             <ListView 
-                Height="300" 
-                Background="White"
-                ItemsSource="{Binding Files}">
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                ItemsSource="{Binding Files}"
+                Height="290"
+                Width="300"
+                Margin="10">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding path}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="300" Foreground="Black" Text="{Binding File}" />
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
             <Button 
-                Content="Analize / Read"
-                Margin="10 10 10 0"
+                Content="Analize"
+                Margin="10 0 10 0"
                 Height="40"
-                Command="{Binding Cancel}"/>
+                Command="{Binding Analize}"/>
             
         </StackPanel>
 

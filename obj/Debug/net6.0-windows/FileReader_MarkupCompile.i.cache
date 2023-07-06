@@ -1,7 +1,7 @@
 ﻿FileReader
 1.0.0.0
 
-winexe
+exe
 C#
 .cs
 C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\timur\source\repos\FileReader\App.xaml
 1-1644662438
 
-8-348772836
+9-1672106665
 194-1797456590
 Views\MainWindow.xaml;
 

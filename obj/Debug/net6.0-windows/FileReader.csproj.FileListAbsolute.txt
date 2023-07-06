@@ -19,3 +19,5 @@ C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\FileReader.genru
 C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\ref\FileReader.dll
 C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\Views\MainWindow.g.cs
 C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\Views\MainWindow.baml
+C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\App.baml
