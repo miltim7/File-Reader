@@ -18,7 +18,8 @@
             
             <ProgressBar 
                 Height="50" 
-                Margin="10 50 10 0"/>
+                Margin="10 50 10 0"
+                Value="{Binding ProgressBar}"/>
 
             <Button 
                 Content="Cancel" 
@@ -29,18 +30,39 @@
                 FontSize="20"
                 Command="{Binding Cancel}"/>
 
-            <TextBlock 
-                Text="{Binding SymbolCount}"
-                FontSize="20" 
-                Margin="20"/>
-            <TextBlock 
-                Text="{Binding Words}" 
-                FontSize="20" 
-                Margin="20"/>
-            <TextBlock 
-                Text="{Binding Sentences}"
-                FontSize="20"
-                Margin="20"/>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    Text="Symbol Count: "
+                    FontSize="20" 
+                    Margin="20"/>
+                <TextBlock 
+                    Text="{Binding SymbolCount}"
+                    FontSize="20" 
+                    Margin="20"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    Text="Word Count: " 
+                    FontSize="20" 
+                    Margin="20"/>
+                <TextBlock 
+                    Text="{Binding Words}" 
+                    FontSize="20" 
+                    Margin="20"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    Text="Sentence Count: "
+                    FontSize="20"
+                    Margin="20"/>
+                <TextBlock 
+                    Text="{Binding Sentences}"
+                    FontSize="20"
+                    Margin="20"/>
+            </StackPanel>
 
         </StackPanel>
 

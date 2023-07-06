@@ -5,19 +5,32 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
+using System.Security.Principal;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace FileReader.ViewModels;
 
 public class MainVM : BaseVM
 {
+    CancellationTokenSource tokenSource;
+
+    int symbol;
+    int word;
+    int sentence;
+
     public MainVM()
     {
         AddFiles();
     }
     private void AddFiles()
     {
+        tokenSource = new CancellationTokenSource();
+
         Files = new ObservableCollection<FileModel>(new List<FileModel>() {
             new FileModel() { File = "chess.txt" },
             new FileModel() { File = "c#.txt" },
@@ -44,27 +57,33 @@ public class MainVM : BaseVM
     }
 
 
-    private string symbolCount;
-    public string SymbolCount
+    private int symbolCount;
+    public int SymbolCount
     {
         get => symbolCount;
         set => OnPropertyChanged(out symbolCount, value);
     }
 
-    private string words;
-    public string Words
+    private int words;
+    public int Words
     {
         get => words;
         set => OnPropertyChanged(out words, value);
     }
 
-    private string sentences;
-    public string Sentences
+    private int sentences;
+    public int Sentences
     {
         get => sentences;
         set => OnPropertyChanged(out sentences, value);
     }
 
+    private double progressBar;
+    public double ProgressBar
+    {
+        get => progressBar;
+        set => OnPropertyChanged(out progressBar, value);
+    }
 
     private ICommand analize;
     public ICommand Analize
@@ -78,7 +97,38 @@ public class MainVM : BaseVM
 
     private void DoAnalize()
     {
+        var task = new Task(() =>
+        {
+            StreamReader reader = new StreamReader(SelectedItem.File);
+            while(!reader.EndOfStream)
+            {
+                if(tokenSource.IsCancellationRequested)
+                    break;
 
+                int nextChar = reader.Read();
+
+                if(nextChar == -1)
+                    break;
+
+                char c = (char) nextChar;
+
+                if(c == ' ')
+                    word++;
+
+                if(c == '.')
+                    sentence++;
+
+                symbol++;
+
+                Console.Write(c);
+
+                Thread.Sleep(10);
+
+                ProgressBar += 0.01;
+            }
+        });
+
+        task.Start();
     }
 
 
@@ -91,6 +141,10 @@ public class MainVM : BaseVM
     }
     private void DoCancel()
     {
+        SymbolCount = symbol;
+        Sentences = sentence;
+        Words = word;
 
+        tokenSource.Cancel();
     }
 }
