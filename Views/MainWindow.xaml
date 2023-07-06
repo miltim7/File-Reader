@@ -15,46 +15,55 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="117*"/>
+            <RowDefinition Height="302*"/>
+            <RowDefinition Height="285*"/>
         </Grid.RowDefinitions>
 
-        <ProgressBar 
-            Grid.Row="0"
+        <ProgressBar
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Height="50" 
             Value="{Binding ProgressBar}"
-            Margin="20 0 20 0"
+            Margin="20,0,20,0"
             VerticalAlignment="Center"/>
 
-        <Button 
-            Grid.Row="1"
+        <Button
             Grid.Column="0"
             VerticalAlignment="Top"
             Content="Cancel" 
             FontSize="17"
             Command="{Binding Cancel}"
-            Margin="20 0 20 0"/>
+            Margin="20,117,20,0" Grid.RowSpan="2"/>
 
-        <Button 
-            Grid.Row="1"
+        <Button
             Grid.Column="1"
             VerticalAlignment="Top"
             Content="Continue" 
             FontSize="17"
             Command="{Binding Continue}"
-            Margin="20 0 20 0"/>
+            Margin="20,117,20,0" Grid.RowSpan="2"/>
 
 
 
-        <Grid Grid.Column="0" Grid.Row="1" Margin="10 50 10 10">
+        <Grid Grid.Column="0" Grid.Row="1" Margin="10,50,10,10" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.6*"/>
                 <RowDefinition Height="0.6*"/>
                 <RowDefinition Height="0.6*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
+
+            <Button 
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Width="50"
+                Height="45" 
+                Content="{materialDesign:PackIcon Kind=Reload, Size=20}"
+                Margin="200 0 10 0"
+                Command="{Binding Reload}"/>
 
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <TextBlock 
@@ -113,19 +122,28 @@
                     AcceptsReturn="True" 
                     VerticalScrollBarVisibility="Auto" 
                     HorizontalScrollBarVisibility="Auto"/>
-                
+
             </StackPanel>
         </Grid>
+
+        <TextBlock 
+            Text="Select new file to analize: "
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="30"
+            FontWeight="DemiBold"
+            VerticalAlignment="Top"
+            Margin="20 40 0 0"/>
 
         <ListView 
             Grid.Row="1"
             Grid.Column="1" 
-            Margin="10 50 10 90"
+            Margin="10,100,10,90"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-            ItemsSource="{Binding Files}">
+            ItemsSource="{Binding Files}" Grid.RowSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">  
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="Black" Text="{Binding File}" />
                     </StackPanel>
                 </DataTemplate>
@@ -133,15 +151,15 @@
         </ListView>
 
         <Button
-            Grid.Row="1" 
+            Grid.Row="2" 
             Grid.Column="1"
             Content="Analize"
-            Margin="10 0 10 10"
+            Margin="10,215,10,0"
             FontSize="25"
             Height="60"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Top"
             Command="{Binding Analize}"/>
 
     </Grid>
-    
+
 </Window>

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Printing;
+using System.Reflection.Metadata;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -189,5 +190,12 @@ public class MainVM : BaseVM
         SetStats(Content);
         makeReset = false;
         DoAnalize();
+    }
+
+    private RelayCommand reload;
+    public RelayCommand Reload
+    {
+        get => reload ??= new RelayCommand(() => SetStats(Content));
+        set => OnPropertyChanged(out reload, value);
     }
 }
