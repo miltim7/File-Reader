@@ -3,35 +3,60 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FileReader"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="470" Width="800">
+        Title="File Reader" Height="720" Width="1024" Background="White">
 
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
-        <StackPanel Grid.Column="0">
-            
-            <ProgressBar 
-                Height="50" 
-                Margin="10 50 10 0"
-                Value="{Binding ProgressBar}"/>
 
-            <Button 
-                Content="Cancel" 
-                HorizontalAlignment="Left"
-                Margin="10 50 0 10"
-                Height="40"
-                Width="100"
-                FontSize="20"
-                Command="{Binding Cancel}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <ProgressBar 
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Height="50" 
+            Value="{Binding ProgressBar}"
+            Margin="20 0 20 0"
+            VerticalAlignment="Center"/>
+
+        <Button 
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalAlignment="Top"
+            Content="Cancel" 
+            FontSize="17"
+            Command="{Binding Cancel}"
+            Margin="20 0 20 0"/>
+
+        <Button 
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Content="Continue" 
+            FontSize="17"
+            Command="{Binding Continue}"
+            Margin="20 0 20 0"/>
 
 
-            <StackPanel Orientation="Horizontal">
+
+        <Grid Grid.Column="0" Grid.Row="1" Margin="10 50 10 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <TextBlock 
                     Text="Symbol Count: "
                     FontSize="20" 
@@ -42,7 +67,7 @@
                     Margin="20"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
                 <TextBlock 
                     Text="Word Count: " 
                     FontSize="20" 
@@ -53,7 +78,7 @@
                     Margin="20"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
                 <TextBlock 
                     Text="Sentence Count: "
                     FontSize="20"
@@ -64,37 +89,52 @@
                     Margin="20"/>
             </StackPanel>
 
-        </StackPanel>
+            <StackPanel Grid.Row="3" Margin="0 10 0 0">
 
-        <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock 
+                        Text="{Binding ContentName}"
+                        FontSize="35"
+                        FontWeight="DemiBold"/>
+                    <TextBlock 
+                        Text="content:"
+                        FontSize="35"
+                        FontWeight="DemiBold"/>
+                </StackPanel>
+                
+                <TextBox 
+                    FontSize="20" 
+                    TextWrapping="Wrap"
+                    Text="{Binding Content}"
+                    VerticalScrollBarVisibility="Visible"/>
+                
+            </StackPanel>
+        </Grid>
 
-            <TextBlock 
-                Text="Files:"
-                FontSize="40"
-                Margin="50 10 10 10"/>
+        <ListView 
+            Grid.Row="1"
+            Grid.Column="1" 
+            Margin="10 50 10 90"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            ItemsSource="{Binding Files}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">  
+                        <TextBlock Foreground="Black" Text="{Binding File}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-            <ListView 
-                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                ItemsSource="{Binding Files}"
-                Height="290"
-                Width="300"
-                Margin="10">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Width="300" Foreground="Black" Text="{Binding File}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <Button 
-                Content="Analize"
-                Margin="10 0 10 0"
-                Height="40"
-                Command="{Binding Analize}"/>
-            
-        </StackPanel>
+        <Button
+            Grid.Row="1" 
+            Grid.Column="1"
+            Content="Analize"
+            Margin="10 0 10 10"
+            FontSize="25"
+            Height="60"
+            VerticalAlignment="Bottom"
+            Command="{Binding Analize}"/>
 
     </Grid>
     

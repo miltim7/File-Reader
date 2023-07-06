@@ -21,3 +21,7 @@ C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\Views\MainWindow
 C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\Views\MainWindow.baml
 C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\App.baml
+C:\Users\timur\source\repos\FileReader\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+C:\Users\timur\source\repos\FileReader\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\timur\source\repos\FileReader\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\timur\source\repos\FileReader\obj\Debug\net6.0-windows\FileReader.csproj.CopyComplete

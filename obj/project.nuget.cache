@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "IX7Q9vtReQ1IIQb9AGLsB6ASb7qguqgqT172EUQ5QSEFUleSfvZAk/XSKwdHmlLH+xepl39g4k1MVCANE+fSPw==",
+  "dgSpecHash": "y85rZ+JJkvX75ylgKmHnPAs9trU5/zNOrsAiWroLN4LnhQElPYjg8EWgv36Jm2a8kCcb3aGytIY6QrwbxcrQZg==",
   "success": true,
   "projectFilePath": "C:\\Users\\timur\\source\\repos\\FileReader\\FileReader.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\timur\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\timur\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\timur\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }
